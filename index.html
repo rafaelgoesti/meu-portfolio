@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rafael Góes - Desenvolvedor FullStack</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    
+    body {
+      background-color: #f8f9fa;
+      color: #333;
+      font-family: 'Roboto', sans-serif;
+    }
+    .navbar {
+      background-color: #ffffff !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+      font-weight: 700;
+      color: #007bff !important;
+    }
+    .nav-link {
+      color: #333 !important;
+      font-weight: 500;
+    }
+    .nav-link:hover {
+      color: #007bff !important;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #007bff, #00bfff);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .hero-section h1 {
+      font-weight: 700;
+      font-size: 3.5rem;
+    }
+    .hero-section p {
+      font-size: 1.2rem;
+    }
+    .profile-img {
+      border: 5px solid #007bff;
+      border-radius: 50%;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+    }
+    .section-title {
+      font-weight: 700;
+      color: #007bff;
+      margin-bottom: 30px;
+    }
+    .card {
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card-img-top {
+      border-radius: 10px 10px 0 0;
+    }
+    .contact-section {
+      background-color: #ffffff;
+      padding: 50px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .form-control {
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      padding: 10px;
+    }
+    .form-control:focus {
+      border-color: #007bff;
+      box-shadow: none;
+    }
+    .btn-primary {
+      background-color: #007bff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #ffffff;
+      color: #333;
+      padding: 20px 0;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .social-icons a {
+      color: #333;
+      margin: 0 10px;
+      font-size: 1.2rem;
+      transition: color 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+    .tech-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    .tech-list li {
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tech-list img {
+      width: 30px;
+      height: 30px;
+    }
+    
+  </style>
+</head>
+<body>
+  <!-- Barra de navegação -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <a class="navbar-brand" href="#">Rafael Góes</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Início</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#sobre">Sobre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#projetos">Projetos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#tecnologias">Tecnologias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contato">Contato</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Seção Hero -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Rafael Góes</h1>
+      <p>Desenvolvedor FullStack | Cursando Ciência da Computação</p>
+    </div>
+  </section>
+  
+  <!-- Seção sobre -->
+  <section id="sobre" class="container text-center my-5 py-5">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="images/foto-perfil.jpeg" class="profile-img" alt="Foto de Perfil">
+      </div>
+      <div class="col-md-8 text-left">
+        <h2 class="section-title">Sobre Mim</h2>
+        <p style="text-align: justify;">Olá! Sou <strong>Rafael Góes Duarte</strong>, <strong>cientista da computação</strong> apaixonado por <strong>tecnologia</strong>, <strong>inovação</strong> e <strong>educação</strong>. Desde o início da minha trajetória, sempre acreditei que a <strong>tecnologia</strong> tem o poder de transformar vidas e criar soluções que impactam positivamente a <strong>sociedade</strong>.</p>
+
+        <p style="text-align: justify;">Atualmente, curso <strong>Ciência da Computação</strong> na <strong>Universidade da Amazônia UNAMA</strong>, onde estou expandindo minhas habilidades em <strong>engenharia de software</strong> e <strong>desenvolvimento de sistemas</strong>. Tenho experiência prática em <strong>desenvolvimento de software</strong>, <strong>banco de dados</strong>, <strong>redes de computadores</strong> e criação de <strong>APIs</strong>, sempre com foco em resolver problemas reais e criar projetos funcionais.</p>
+
+        <p style="text-align: justify;">Meu objetivo é seguir evoluindo como <strong>desenvolvedor</strong>, criando soluções <strong>inovadoras</strong> e colaborando em projetos <strong>desafiadores</strong>. Acredito que, com <strong>dedicação</strong> e <strong>criatividade</strong>, podemos usar a <strong>tecnologia</strong> para transformar o mundo em um lugar melhor. 🚀</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de projetos -->
+  <section id="projetos" class="container my-5 py-5">
+    <h2 class="section-title text-center">Meus Projetos</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="images/gestao-cliente.jpeg" class="card-img-top" alt="Projeto 1">
+          <div class="card-body">
+            <h5 class="card-title">Sistema de Gestão de Clientes🚀</h5>
+            <p class="card-text">
+                Desenvolvido com Python, Flask, Bootstrap e JavaScript, este sistema oferece uma solução prática e eficiente para o cadastro de clientes e a gestão de contratos. Com um design intuitivo e funcionalidades completas, o sistema facilita o dia a dia das empresas na organização e controle de informações.</p>
+            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="images/Captura de tela 2025-02-08 220724.png" class="card-img-top" alt="Projeto 2">
+          <div class="card-body">
+            <h5 class="card-title">Aplicativo Mobile</h5>
+            <p class="card-text">Aplicativo desenvolvido para facilitar a comunicação entre equipes remotas.</p>
+            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="images/Captura de tela 2025-02-10 175706.png" class="card-img-top" alt="Projeto 3">
+          <div class="card-body">
+            <h5 class="card-title">Plataforma E-commerce</h5>
+            <p class="card-text">Plataforma de e-commerce com integração de pagamentos e gestão de estoque.</p>
+            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de tecnologias -->
+  <section id="tecnologias" class="container my-5 py-5">
+    <h2 class="section-title text-center">Tecnologias e Ferramentas</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <h4>Back-End</h4>
+        <ul class="tech-list">
+          <li><img src="images/python-logo.png" alt="Python"> Python</li>
+          <li><img src="images/flask-logo.png" alt="Flask"> Flask</li>
+          <li><img src="images/django-logo.png" alt="Django"> Django</li>
+          <li><img src="images/sqlalchemy-logo.png" alt="SQLAlchemy"> SQLAlchemy</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Banco de Dados</h4>
+        <ul class="tech-list">
+          <li><img src="images/mysql-logo.png" alt="MySQL"> MySQL</li>
+          <li><img src="images/sqlite-logo.png" alt="SQLite"> SQLite</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h4>Front-End</h4>
+        <ul class="tech-list">
+          <li><img src="images/javascript-logo.png" alt="JavaScript"> JavaScript</li>
+          <li><img src="images/bootstrap-logo.png" alt="Bootstrap"> Bootstrap</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Mobile</h4>
+        <ul class="tech-list">
+          <li><img src="images/flutter-logo.png" alt="Flutter"> Flutter</li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <h4>DevOps</h4>
+        <ul class="tech-list">
+          <li><img src="images/deploy-logo.png" alt="Deploy"> Deploy de APIs e Sistemas</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <h4>Automação</h4>
+        <ul class="tech-list">
+          <li><img src="images/python-logo.png" alt="Python"> Scripts em Python para Excel, Word e WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção de contato -->
+  <section id="contato" class="container my-5 py-5 contact-section">
+    <h2 class="section-title text-center">Contato</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Seu Nome" required>
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Seu E-mail" required>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Sua Mensagem" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+    <div class="text-center mt-4">
+      <p>Ou conecte-se comigo nas redes sociais:</p>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/meu-perfil" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/meu-github" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://twitter.com/meu-twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="text-center">
+    <p>&copy; 2024 Rafael Góes. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Bootstrap JS e dependências -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
