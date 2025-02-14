@@ -10,30 +10,31 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <!-- Adicione isto no <head> do HTML -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    
     body {
-      background-color: #f8f9fa;
-      color: #333;
-      font-family: 'Roboto', sans-serif;
+      background-color: #151B23;
+      color: white;
+      font-family: 'Fira Code', monospace;
     }
     .navbar {
-      background-color: #ffffff !important;
+      background-color: #1E2933 !important;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
     .navbar-brand {
       font-weight: 700;
-      color: #007bff !important;
+      color: #FFDD56 !important;
     }
     .nav-link {
-      color: #333 !important;
+      color: #FFDD56 !important;
       font-weight: 500;
     }
     .nav-link:hover {
-      color: #007bff !important;
+      color: #c49d02 !important;
     }
     .hero-section {
-      background: linear-gradient(135deg, #007bff, #00bfff);
+      background: #151B23;
       color: white;
       padding: 100px 0;
       text-align: center;
@@ -46,7 +47,7 @@
       font-size: 1.2rem;
     }
     .profile-img {
-      border: 5px solid #007bff;
+      border: 5px solid #FFDD56; /* Alterado para amarelo */
       border-radius: 50%;
       width: 200px;
       height: 200px;
@@ -54,7 +55,7 @@
     }
     .section-title {
       font-weight: 700;
-      color: #007bff;
+      color: #FFDD56; /* Alterado para amarelo */
       margin-bottom: 30px;
     }
     .card {
@@ -81,34 +82,35 @@
       padding: 10px;
     }
     .form-control:focus {
-      border-color: #007bff;
+      border-color: #FFDD56; /* Alterado para amarelo */
       box-shadow: none;
     }
     .btn-primary {
-      background-color: #007bff;
+      background-color: #FFDD56; /* Alterado para amarelo */
       border: none;
       padding: 10px 20px;
       border-radius: 5px;
       font-weight: 500;
       transition: background-color 0.3s ease;
+      color: #1E2933; /* Cor do texto ajustada para contraste */
     }
     .btn-primary:hover {
-      background-color: #0056b3;
+      background-color: #c49d02; /* Tom mais escuro de amarelo */
     }
     footer {
-      background-color: #ffffff;
-      color: #333;
+      background-color: #1E2933; /* Alterado para combinar com a navbar */
+      color: #FFDD56; /* Alterado para amarelo */
       padding: 20px 0;
       box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
     }
     .social-icons a {
-      color: #333;
+      color: #FFDD56; /* Alterado para amarelo */
       margin: 0 10px;
       font-size: 1.2rem;
       transition: color 0.3s ease;
     }
     .social-icons a:hover {
-      color: #007bff;
+      color: #c49d02; /* Tom mais escuro de amarelo */
     }
     .tech-list {
       list-style: none;
@@ -118,7 +120,7 @@
       gap: 15px;
     }
     .tech-list li {
-      background: #ffffff;
+      background: #1E2933;
       padding: 15px;
       border-radius: 5px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -127,16 +129,61 @@
       gap: 10px;
     }
     .tech-list img {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
     }
-    
+
+    /* Estilo para a animação de digitação */
+    .typed-text {
+    font-size: 3rem;
+    font-weight: bold;
+    border-right: 3px solid #000; /* Simula o cursor */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+    animation: typing 3s steps(20) 1s forwards, blink-caret 0.75s step-end infinite;
+    }
+
+    /* Animação de digitação */
+    @keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+    }
+
+    /* Efeito de piscar do cursor */
+    @keyframes blink-caret {
+    50% {
+        border-color: transparent;
+    }
+    }
+    .card-body {
+        color: black;
+    }
+    .card-img-top {
+    width: 100%;
+    height: 200px;
+    }
+
+    .hidden {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .visible {
+    opacity: 1;
+    transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
   <!-- Barra de navegação -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="#">Rafael Góes</a>
+    <a class="navbar-brand" href="#">My Portfolio</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -164,23 +211,29 @@
   <!-- Seção Hero -->
   <section class="hero-section">
     <div class="container">
-      <h1>Rafael Góes</h1>
+      <h1 class="typed-text">Rafael Góes</h1>
       <p>Desenvolvedor FullStack | Cursando Ciência da Computação</p>
     </div>
   </section>
-  
-  <!-- Seção sobre -->
+
+  <!-- Seção Sobre -->
   <section id="sobre" class="container text-center my-5 py-5">
     <div class="row">
       <div class="col-md-4">
         <img src="images/foto-perfil.jpeg" class="profile-img" alt="Foto de Perfil">
+        <p></p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/rafael-g%C3%B3es-duarte-10709332a/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/rafaelgoesti" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/rafaelgoesti/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:rafaelgoesti2021@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+        </div>    
+        <p></p>      
       </div>
       <div class="col-md-8 text-left">
         <h2 class="section-title">Sobre Mim</h2>
         <p style="text-align: justify;">Olá! Sou <strong>Rafael Góes Duarte</strong>, <strong>cientista da computação</strong> apaixonado por <strong>tecnologia</strong>, <strong>inovação</strong> e <strong>educação</strong>. Desde o início da minha trajetória, sempre acreditei que a <strong>tecnologia</strong> tem o poder de transformar vidas e criar soluções que impactam positivamente a <strong>sociedade</strong>.</p>
-
         <p style="text-align: justify;">Atualmente, curso <strong>Ciência da Computação</strong> na <strong>Universidade da Amazônia UNAMA</strong>, onde estou expandindo minhas habilidades em <strong>engenharia de software</strong> e <strong>desenvolvimento de sistemas</strong>. Tenho experiência prática em <strong>desenvolvimento de software</strong>, <strong>banco de dados</strong>, <strong>redes de computadores</strong> e criação de <strong>APIs</strong>, sempre com foco em resolver problemas reais e criar projetos funcionais.</p>
-
         <p style="text-align: justify;">Meu objetivo é seguir evoluindo como <strong>desenvolvedor</strong>, criando soluções <strong>inovadoras</strong> e colaborando em projetos <strong>desafiadores</strong>. Acredito que, com <strong>dedicação</strong> e <strong>criatividade</strong>, podemos usar a <strong>tecnologia</strong> para transformar o mundo em um lugar melhor. 🚀</p>
       </div>
     </div>
@@ -192,31 +245,41 @@
     <div class="row">
       <div class="col-md-4 mb-4">
         <div class="card">
+            <img src="images/portifolio.png" class="card-img-top" alt="Projeto 1">
+            <div class="card-body">
+              <h5 class="card-title">My Portfolio🖥️</h5>
+              <p class="card-text" style="text-align: justify;">Este projeto apresenta meu portfólio profissional, destacando meus projetos, tecnologias e um pouco sobre minha trajetória na área de tecnologia.</p>
+              <br>
+              <br>
+              <a href="https://github.com/rafaelgoesti/meu-portfolio" class="btn btn-primary" target="_blank">Ver Detalhes</a>
+            </div>
+        </div>
+        <p></p>
+        <div class="card">
           <img src="images/gestao-cliente.jpeg" class="card-img-top" alt="Projeto 1">
           <div class="card-body">
             <h5 class="card-title">Sistema de Gestão de Clientes🚀</h5>
-            <p class="card-text">
-                Desenvolvido com Python, Flask, Bootstrap e JavaScript, este sistema oferece uma solução prática e eficiente para o cadastro de clientes e a gestão de contratos. Com um design intuitivo e funcionalidades completas, o sistema facilita o dia a dia das empresas na organização e controle de informações.</p>
+            <p class="card-text" style="text-align: justify;">Desenvolvido com Python, Flask, Bootstrap e JavaScript, este sistema oferece uma solução prática e eficiente para o cadastro de clientes e a gestão de contratos.</p>
             <a href="#" class="btn btn-primary">Ver Detalhes</a>
           </div>
         </div>
       </div>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/Captura de tela 2025-02-08 220724.png" class="card-img-top" alt="Projeto 2">
+          <img src="images/cad-med.png" class="card-img-top" alt="Projeto 2">
           <div class="card-body">
-            <h5 class="card-title">Aplicativo Mobile</h5>
-            <p class="card-text">Aplicativo desenvolvido para facilitar a comunicação entre equipes remotas.</p>
-            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+            <h5 class="card-title">Aplicativo Mobile📱</h5>
+            <p class="card-text" style="text-align: justify;">Cadmed App é uma aplicação móvel desenvolvida em Flutter, projetada para facilitar e agilizar o processo de registro e gerenciamento de pessoas atendidas nos postos da Defesa Civil durante o evento do cirio de 2024.</p>
+            <a href="https://github.com/CAD-MED/Projeto-de-extensao-CAD-MED" class="btn btn-primary" target="_blank">Ver Detalhes</a>
           </div>
         </div>
       </div>
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/Captura de tela 2025-02-10 175706.png" class="card-img-top" alt="Projeto 3">
+          <img src="images/controle-estoque.png" class="card-img-top" alt="Projeto 3">
           <div class="card-body">
-            <h5 class="card-title">Plataforma E-commerce</h5>
-            <p class="card-text">Plataforma de e-commerce com integração de pagamentos e gestão de estoque.</p>
+            <h5 class="card-title">Gerênciador de Estoque📦</h5>
+            <p class="card-text" style="text-align: justify;">Este é um sistema de gerenciamento de estoque desenvolvido em HTML, CSS e PHP, que oferece funcionalidades para visualizar, adicionar, editar, excluir e gerar relatórios de produtos, proporcionando uma gestão simples e eficiente.</p>
             <a href="#" class="btn btn-primary">Ver Detalhes</a>
           </div>
         </div>
@@ -224,53 +287,60 @@
     </div>
   </section>
 
-  <!-- Seção de tecnologias -->
-  <section id="tecnologias" class="container my-5 py-5">
+ <!-- Seção de tecnologias -->
+<section id="tecnologias" class="container my-5 py-5">
     <h2 class="section-title text-center">Tecnologias e Ferramentas</h2>
-    <div class="row">
+    <div class="row tech-section">
       <div class="col-md-6">
         <h4>Back-End</h4>
         <ul class="tech-list">
-          <li><img src="images/python-logo.png" alt="Python"> Python</li>
-          <li><img src="images/flask-logo.png" alt="Flask"> Flask</li>
-          <li><img src="images/django-logo.png" alt="Django"> Django</li>
-          <li><img src="images/sqlalchemy-logo.png" alt="SQLAlchemy"> SQLAlchemy</li>
+          <li><img title="Python" alt="Python" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"> Python</li>
+          <li><img title="Flask" alt="Flask" width="40px" src="https://img.icons8.com/ios-filled/FFFFFF/flask.png"> Flask</li>
+          <li><img src="images/logo-django.png" alt=""> Django</li>
+          <li><img title="PHP" alt="PHP" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"> PHP</li>
+          <li><img title="C" alt="C" width="40px" src="https://raw.githubusercontent.com/github/explore/master/topics/c/c.png"> C</li>
         </ul>
       </div>
       <div class="col-md-6">
         <h4>Banco de Dados</h4>
         <ul class="tech-list">
-          <li><img src="images/mysql-logo.png" alt="MySQL"> MySQL</li>
-          <li><img src="images/sqlite-logo.png" alt="SQLite"> SQLite</li>
+          <li><img title="MySQL" alt="MySQL" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"> MySQL</li>
+          <li><img title="SQLite" alt="SQLite" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg"> SQLite</li>
         </ul>
       </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-4 tech-section">
       <div class="col-md-6">
         <h4>Front-End</h4>
         <ul class="tech-list">
-          <li><img src="images/javascript-logo.png" alt="JavaScript"> JavaScript</li>
-          <li><img src="images/bootstrap-logo.png" alt="Bootstrap"> Bootstrap</li>
+          <li><img title="HTML" alt="HTML" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> HTML5</li>
+          <li><img title="CSS" alt="CSS" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"> CSS3</li>
+          <li><img title="JavaScript" alt="JavaScript" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"> JavaScript</li>
+          <li><img title="Bootstrap" alt="Bootstrap" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"> Bootstrap</li>
         </ul>
       </div>
       <div class="col-md-6">
-        <h4>Mobile</h4>
+        <h4>Controle de Versão</h4>
         <ul class="tech-list">
-          <li><img src="images/flutter-logo.png" alt="Flutter"> Flutter</li>
+          <li><img title="Git" alt="Git" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"> Git</li>
+          <li><img title="GitHub" alt="GitHub" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"> GitHub</li>
         </ul>
       </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-4 tech-section">
       <div class="col-md-6">
         <h4>DevOps</h4>
         <ul class="tech-list">
-          <li><img src="images/deploy-logo.png" alt="Deploy"> Deploy de APIs e Sistemas</li>
+          <li><img title="Docker" alt="Docker" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"> Docker</li>
         </ul>
       </div>
       <div class="col-md-6">
-        <h4>Automação</h4>
+        <h4>IDEs</h4>
         <ul class="tech-list">
-          <li><img src="images/python-logo.png" alt="Python"> Scripts em Python para Excel, Word e WhatsApp</li>
+          <li><img title="VS Code" alt="VS Code" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"> VS Code</li>
+          <li><img title="Visual Studio" alt="Visual Studio" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg"> Visual Studio</li>
+          <li><img title="PyCharm" alt="PyCharm" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pycharm/pycharm-original.svg"> PyCharm</li>
+          <li><img title="PHPStorm" alt="PHPStorm" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/phpstorm/phpstorm-original.svg"> PHPStorm</li>
         </ul>
       </div>
     </div>
@@ -295,24 +365,39 @@
         </form>
       </div>
     </div>
-    <div class="text-center mt-4">
-      <p>Ou conecte-se comigo nas redes sociais:</p>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/meu-perfil" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="https://github.com/meu-github" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/meu-twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-      </div>
-    </div>
   </section>
 
   <!-- Rodapé -->
   <footer class="text-center">
-    <p>&copy; 2024 Rafael Góes. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Rafael Góes. Todos os direitos reservados.</p>
   </footer>
+  <!-- Inclua a CDN do Animate.css para animações -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
   <!-- Bootstrap JS e dependências -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- JavaScript -->
+    
+<!-- JavaScript -->
+    <script>
+    // Função para aplicar a animação quando a seção entrar na tela
+    const sections = document.querySelectorAll('.tech-section');
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+            observer.unobserve(entry.target); // Para que a animação ocorra apenas uma vez
+        }
+        });
+    }, { threshold: 0.5 }); // A animação começa quando 50% da seção estiver visível
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    </script>
+
 </body>
 </html>
