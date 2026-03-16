@@ -3,395 +3,1472 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rafael Góes - Desenvolvedor FullStack</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <title>Rafael Góes | Desenvolvedor FullStack</title>
+  <meta name="description" content="Portfólio de Rafael Góes Duarte - Desenvolvedor FullStack, Cientista da Computação">
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- AOS - Animate On Scroll -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #151B23;
-      color: white;
-      font-family: 'Fira Code', monospace;
+    /* ===== VARIÁVEIS ===== */
+    :root {
+      --bg-primary:    #151B23;
+      --bg-secondary:  #1E2933;
+      --bg-card:       #1A2330;
+      --accent:        #FFDD56;
+      --accent-dark:   #c49d02;
+      --accent-glow:   rgba(255, 221, 86, 0.15);
+      --text-primary:  #FFFFFF;
+      --text-muted:    #8B9BB4;
+      --border:        rgba(255, 221, 86, 0.15);
+      --shadow:        0 8px 32px rgba(0, 0, 0, 0.4);
     }
+
+    /* ===== RESET / BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: 'Fira Code', monospace;
+      overflow-x: hidden;
+    }
+
+    /* ===== SCROLL PROGRESS BAR ===== */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), #ff9f43);
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.1s linear;
+    }
+
+    /* ===== NAVBAR ===== */
     .navbar {
-      background-color: #1E2933 !important;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color: rgba(30, 41, 51, 0.95) !important;
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      transition: all 0.3s ease;
+    }
+    .navbar.scrolled {
+      padding: 10px 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.5);
     }
     .navbar-brand {
       font-weight: 700;
-      color: #FFDD56 !important;
+      font-size: 1.3rem;
+      color: var(--accent) !important;
+      letter-spacing: -0.5px;
     }
+    .navbar-brand span { color: var(--text-primary); }
     .nav-link {
-      color: #FFDD56 !important;
+      color: var(--text-muted) !important;
       font-weight: 500;
+      font-size: 0.875rem;
+      padding: 6px 14px !important;
+      border-radius: 6px;
+      transition: all 0.25s ease;
     }
-    .nav-link:hover {
-      color: #c49d02 !important;
+    .nav-link:hover, .nav-link.active {
+      color: var(--accent) !important;
+      background: var(--accent-glow);
     }
+    .navbar-toggler {
+      border: 1px solid var(--border);
+      padding: 4px 8px;
+    }
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,221,86,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+    }
+
+    /* ===== HERO ===== */
     .hero-section {
-      background: #151B23;
-      color: white;
-      padding: 100px 0;
-      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-primary);
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 80px;
     }
-    .hero-section h1 {
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255,221,86,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      bottom: -150px;
+      left: -150px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(255,221,86,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-terminal {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      max-width: 820px;
+      width: 100%;
+      box-shadow: var(--shadow), 0 0 80px rgba(255,221,86,0.05);
+    }
+    .terminal-header {
+      background: var(--bg-card);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red   { background: #ff5f57; }
+    .dot-yellow{ background: #febc2e; }
+    .dot-green { background: #28c840; }
+    .terminal-title {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+    .terminal-body {
+      padding: 32px 36px;
+    }
+    .terminal-line {
+      line-height: 1.8;
+      font-size: 0.92rem;
+    }
+    .terminal-prompt { color: #28c840; }
+    .terminal-cmd    { color: var(--text-muted); }
+    .terminal-output-name {
+      font-size: 2.6rem;
       font-weight: 700;
-      font-size: 3.5rem;
+      color: var(--text-primary);
+      line-height: 1.15;
+      margin: 10px 0 6px;
     }
-    .hero-section p {
-      font-size: 1.2rem;
+    .terminal-output-name span { color: var(--accent); }
+    .terminal-role {
+      color: var(--accent);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+    .terminal-desc {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      margin-bottom: 30px;
+      max-width: 540px;
+      line-height: 1.7;
+      font-family: 'Inter', sans-serif;
+    }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-accent {
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 0.875rem;
+      padding: 11px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-accent:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255,221,86,0.3);
+      color: var(--bg-primary);
+    }
+    .btn-outline-accent {
+      background: transparent;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 11px 24px;
+      border-radius: 8px;
+      border: 1.5px solid var(--accent);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-outline-accent:hover {
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+      color: var(--accent);
+    }
+    .cursor-blink {
+      display: inline-block;
+      width: 3px;
+      height: 1.1em;
+      background: var(--accent);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Hero stats */
+    .hero-stats {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+    .stat-item { text-align: center; }
+    .stat-number {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ===== SEÇÃO GENÉRICA ===== */
+    section { padding: 90px 0; }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 50px;
+    }
+    .section-line {
+      width: 50px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 2px;
+      margin: 10px 0 14px;
+    }
+
+    /* ===== SOBRE ===== */
+    #sobre { background: var(--bg-primary); }
+    .profile-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      position: sticky;
+      top: 90px;
     }
     .profile-img {
-      border: 5px solid #FFDD56; 
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
-      width: 200px;
-      height: 200px;
       object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px rgba(255,221,86,0.2);
     }
-    .section-title {
-      font-weight: 700;
-      color: #FFDD56; 
-      margin-bottom: 30px;
-    }
-    .card {
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-    }
-    .card-img-top {
-      border-radius: 10px 10px 0 0;
-    }
-    .contact-section {
-      background-color: #ffffff;
-      padding: 50px 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    .form-control {
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      padding: 10px;
-    }
-    .form-control:focus {
-      border-color: #FFDD56; 
-      box-shadow: none;
-    }
-    .btn-primary {
-      background-color: #FFDD56;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      font-weight: 500;
-      transition: background-color 0.3s ease;
-      color: #1E2933; 
-    }
-    .btn-primary:hover {
-      background-color: #c49d02;
-    }
-    footer {
-      background-color: #1E2933; 
-      color: #FFDD56;
-      padding: 20px 0;
-      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .social-icons a {
-      color: #FFDD56;
-      margin: 0 10px;
+    .profile-name {
       font-size: 1.2rem;
-      transition: color 0.3s ease;
+      font-weight: 700;
+      margin: 16px 0 4px;
+    }
+    .profile-role {
+      font-size: 0.8rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .social-icons { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
+    .social-icons a {
+      width: 38px;
+      height: 38px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: all 0.25s ease;
+      font-size: 0.9rem;
+      text-decoration: none;
     }
     .social-icons a:hover {
-      color: #c49d02; 
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-3px);
     }
-    .tech-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .tech-list li {
-      background: #1E2933;
-      padding: 15px;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    .profile-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
       display: flex;
       align-items: center;
       gap: 10px;
+      margin-bottom: 10px;
+      text-align: left;
     }
-    .tech-list img {
+    .profile-badge i { color: var(--accent); width: 16px; }
+    .about-text {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 0.925rem;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+    .about-text strong { color: var(--text-primary); }
+
+    /* ===== TIMELINE ===== */
+    #formacao { background: var(--bg-secondary); }
+    .timeline {
+      position: relative;
+      padding: 10px 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 22px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 36px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: 13px;
+      top: 4px;
+      width: 20px;
+      height: 20px;
+      background: var(--bg-card);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-dot i { font-size: 0.55rem; color: var(--accent); }
+    .timeline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: border-color 0.25s ease, transform 0.25s ease;
+    }
+    .timeline-card:hover {
+      border-color: var(--accent);
+      transform: translateX(6px);
+    }
+    .timeline-period {
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+    .timeline-title {
+      font-size: 1.0rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .timeline-subtitle {
+      font-size: 0.83rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+    }
+
+    /* ===== PROJETOS ===== */
+    #projetos { background: var(--bg-primary); }
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .filter-btn {
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 7px 18px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      font-family: 'Fira Code', monospace;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent-glow);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .project-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,221,86,0.4);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.4), 0 0 30px rgba(255,221,86,0.06);
+    }
+    .project-thumb-wrapper {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .project-thumb {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .project-card:hover .project-thumb {
+      transform: scale(1.04);
+    }
+    .project-thumb-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .project-thumb-wrapper:hover .project-thumb-overlay {
+      opacity: 1;
+    }
+    .project-thumb-overlay span {
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-family: 'Fira Code', monospace;
+    }
+    .screenshot-count-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid var(--border);
+      color: var(--accent);
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .project-body {
+      padding: 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-category {
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+      flex: 1;
+      margin-bottom: 18px;
+    }
+    .tech-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
+    .tech-badge {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 3px 10px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: 'Fira Code', monospace;
+    }
+    .project-actions { display: flex; gap: 10px; }
+    .btn-project-primary {
+      flex: 1;
+      background: var(--accent);
+      color: var(--bg-primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+    }
+    .btn-project-primary:hover {
+      background: var(--accent-dark);
+      color: var(--bg-primary);
+      transform: translateY(-1px);
+    }
+    .btn-project-secondary {
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 9px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+    }
+    .btn-project-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    /* ===== MODAL DE SCREENSHOTS ===== */
+    .modal-content {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .modal-header {
+      border-bottom: 1px solid var(--border);
+      padding: 18px 24px;
+    }
+    .modal-title { color: var(--accent); font-size: 1rem; }
+    .btn-close { filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg); }
+    .modal-body { padding: 20px; }
+    .modal-footer { border-top: 1px solid var(--border); padding: 14px 24px; }
+    .carousel-item img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      background: var(--bg-card);
+      border-radius: 10px;
+    }
+    .carousel-control-prev, .carousel-control-next { width: 40px; }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(255,221,86,0.2);
+      border-radius: 50%;
+      padding: 18px;
+    }
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--text-muted);
+      border: none;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+    .carousel-indicators .active { background-color: var(--accent); }
+    .modal-project-info { padding: 16px 0 0; }
+    .modal-project-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 6px; }
+    .modal-project-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ===== TECNOLOGIAS ===== */
+    #tecnologias { background: var(--bg-secondary); }
+    .tech-category-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    .tech-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .tech-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.82rem;
+      transition: all 0.25s ease;
+      cursor: default;
+    }
+    .tech-item:hover {
+      border-color: var(--accent);
+      background: var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .tech-item img { width: 28px; height: 28px; object-fit: contain; }
+
+    /* ===== CONTATO ===== */
+    #contato { background: var(--bg-primary); }
+    .contact-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 40px;
+    }
+    .form-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+    }
+    .form-control {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-primary);
+      font-family: 'Fira Code', monospace;
+      font-size: 0.875rem;
+      padding: 12px 16px;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .form-control:focus {
+      background: var(--bg-card);
+      border-color: var(--accent);
+      color: var(--text-primary);
+      box-shadow: 0 0 0 3px rgba(255,221,86,0.1);
+    }
+    .form-control::placeholder { color: var(--text-muted); }
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .contact-info-icon {
       width: 40px;
       height: 40px;
+      background: var(--accent-glow);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: 'Inter', sans-serif;
+    }
+    .contact-info-value { font-size: 0.875rem; font-weight: 500; }
+    .contact-info-value a {
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-info-value a:hover { color: var(--accent); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+    }
+    .footer-text { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-text span { color: var(--accent); }
+
+    /* ===== BACK TO TOP ===== */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 44px;
+      height: 44px;
+      background: var(--accent);
+      color: var(--bg-primary);
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      z-index: 999;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    #back-to-top.visible { opacity: 1; transform: translateY(0); }
+    #back-to-top:hover { background: var(--accent-dark); transform: translateY(-3px); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .terminal-output-name { font-size: 1.8rem; }
+      .terminal-body { padding: 22px 20px; }
+      .hero-stats { gap: 20px; }
+      .stat-number { font-size: 1.3rem; }
+      .profile-card { position: static; margin-bottom: 30px; }
+      .contact-card { padding: 24px 18px; }
+      .section-title { font-size: 1.5rem; }
+      #back-to-top { bottom: 20px; right: 20px; }
     }
 
-    /* Estilo para a animação de digitação rsrs */
-    .typed-text {
-    font-size: 3rem;
-    font-weight: bold;
-    border-right: 3px solid #000;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 3s steps(20) 1s forwards, blink-caret 0.75s step-end infinite;
-    }
-
-    @keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
-    }
-
-    @keyframes blink-caret {
-    50% {
-        border-color: transparent;
-    }
-    }
-    .card-body {
-        color: black;
-    }
-    .card-img-top {
-    width: 100%;
-    height: 200px;
-    }
-
-    .hidden {
-    opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-    .visible {
-    opacity: 1;
-    transform: translateY(0);
-    }
-
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: var(--bg-secondary); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
   </style>
 </head>
 <body>
-  <!-- Barra de navegação -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-    <a class="navbar-brand" href="#">My Portfolio</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Início</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#sobre">Sobre</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#projetos">Projetos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#tecnologias">Tecnologias</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#contato">Contato</a>
-        </li>
-      </ul>
+
+  <!-- Barra de progresso de scroll -->
+  <div id="progress-bar"></div>
+
+  <!-- Botão Voltar ao Topo -->
+  <a href="#" id="back-to-top" title="Voltar ao topo">
+    <i class="fas fa-arrow-up"></i>
+  </a>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#"><span>&lt;</span>Rafael<span>/&gt;</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto gap-1">
+          <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="#formacao">Formação</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projetos">Projetos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tecnologias">Tecnologias</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- Seção Heroooo -->
-  <section class="hero-section">
+  <!-- ===== HERO ===== -->
+  <section class="hero-section" id="inicio">
     <div class="container">
-      <h1 class="typed-text">Rafael Góes</h1>
-      <p>Desenvolvedor FullStack | Cursando Ciência da Computação</p>
-    </div>
-  </section>
-
-  <!-- Seção Sobre -->
-  <section id="sobre" class="container text-center my-5 py-5">
-    <div class="row">
-      <div class="col-md-4">
-        <img src="images/foto-perfil.jpeg" class="profile-img" alt="Foto de Perfil">
-        <p></p>
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/rafael-g%C3%B3es-duarte-10709332a/" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/rafaelgoesti" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.instagram.com/rafaelgoesti/" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:rafaelgoesti2021@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
-        </div>    
-        <p></p>      
-      </div>
-      <div class="col-md-8 text-left">
-        <h2 class="section-title">Sobre Mim</h2>
-        <p style="text-align: justify;">Olá! Sou <strong>Rafael Góes Duarte</strong>, <strong>cientista da computação</strong> apaixonado por <strong>tecnologia</strong>, <strong>inovação</strong> e <strong>educação</strong>. Desde o início da minha trajetória, sempre acreditei que a <strong>tecnologia</strong> tem o poder de transformar vidas e criar soluções que impactam positivamente a <strong>sociedade</strong>.</p>
-        <p style="text-align: justify;">Atualmente, curso <strong>Ciência da Computação</strong> na <strong>Universidade da Amazônia UNAMA</strong>, onde estou expandindo minhas habilidades em <strong>engenharia de software</strong> e <strong>desenvolvimento de sistemas</strong>. Tenho experiência prática em <strong>desenvolvimento de software</strong>, <strong>banco de dados</strong>, <strong>redes de computadores</strong> e criação de <strong>APIs</strong>, sempre com foco em resolver problemas reais e criar projetos funcionais.</p>
-        <p style="text-align: justify;">Meu objetivo é seguir evoluindo como <strong>desenvolvedor</strong>, criando soluções <strong>inovadoras</strong> e colaborando em projetos <strong>desafiadores</strong>. Acredito que, com <strong>dedicação</strong> e <strong>criatividade</strong>, podemos usar a <strong>tecnologia</strong> para transformar o mundo em um lugar melhor. 🚀</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Seção de projetinhos -->
-  <section id="projetos" class="container my-5 py-5">
-    <h2 class="section-title text-center">Meus Projetos</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
-        <div class="card">
-            <img src="images/portifolio.png" class="card-img-top" alt="Projeto 1">
-            <div class="card-body">
-              <h5 class="card-title">My Portfolio🖥️</h5>
-              <p class="card-text" style="text-align: justify;">Este projeto apresenta meu portfólio profissional, destacando meus projetos, tecnologias e um pouco sobre minha trajetória na área de tecnologia.</p>
-              <br>
-              <br>
-              <a href="https://github.com/rafaelgoesti/meu-portfolio" class="btn btn-primary" target="_blank">Ver Detalhes</a>
+      <div class="d-flex justify-content-center" data-aos="fade-up">
+        <div class="hero-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dot dot-red"></div>
+            <div class="terminal-dot dot-yellow"></div>
+            <div class="terminal-dot dot-green"></div>
+            <span class="terminal-title">~  rafael-portfolio — bash</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt">rafael@portfolio</span>
+              <span class="terminal-cmd"> $ whoami</span>
             </div>
-        </div>
-        <p></p>
-        <div class="card">
-          <img src="images/gestao-cliente.jpeg" class="card-img-top" alt="Projeto 1">
-          <div class="card-body">
-            <h5 class="card-title">Sistema de Gestão de Clientes🚀</h5>
-            <p class="card-text" style="text-align: justify;">Desenvolvido com Python, Flask, Bootstrap e JavaScript, este sistema oferece uma solução prática e eficiente para o cadastro de clientes e a gestão de contratos.</p>
-            <a href="#" class="btn btn-primary">Ver Detalhes</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="images/cad-med.png" class="card-img-top" alt="Projeto 2">
-          <div class="card-body">
-            <h5 class="card-title">Aplicativo Mobile📱</h5>
-            <p class="card-text" style="text-align: justify;">Cadmed App é uma aplicação móvel desenvolvida em Flutter, projetada para facilitar e agilizar o processo de registro e gerenciamento de pessoas atendidas nos postos da Defesa Civil durante o evento do cirio de 2024.</p>
-            <a href="https://github.com/CAD-MED/Projeto-de-extensao-CAD-MED" class="btn btn-primary" target="_blank">Ver Detalhes</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="images/controle-estoque.png" class="card-img-top" alt="Projeto 3">
-          <div class="card-body">
-            <h5 class="card-title">Gerênciador de Estoque📦</h5>
-            <p class="card-text" style="text-align: justify;">Este é um sistema de gerenciamento de estoque desenvolvido em HTML, CSS e PHP, que oferece funcionalidades para visualizar, adicionar, editar, excluir e gerar relatórios de produtos, proporcionando uma gestão simples e eficiente.</p>
-            <a href="#" class="btn btn-primary">Ver Detalhes</a>
+            <div class="terminal-output-name">
+              Rafael <span>Góes</span> Duarte<span class="cursor-blink"></span>
+            </div>
+            <div class="terminal-role">&gt; Desenvolvedor Full Stack | Cientista da Computação | Engenheiro de Software</div>
+            <p class="terminal-desc">
+              Especialista em desenvolvimento de aplicações web modernas e sistemas escaláveis.
+              Atuo do backend ao frontend, projetando arquiteturas robustas, APIs eficientes e
+              interfaces bem estruturadas.<br><br>
+              Experiência na construção de produtos completos utilizando tecnologias modernas,
+              boas práticas de engenharia de software e foco em performance, segurança e
+              manutenibilidade.<br><br>
+              Apaixonado por tecnologia, inovação e impacto social, desenvolvo soluções que
+              resolvem problemas reais desde plataformas web e sistemas governamentais até
+              produtos digitais com potencial de escala.
+            </p>
+            <div class="hero-btns">
+              <a href="#projetos" class="btn-accent">
+                <i class="fas fa-code"></i> Ver Projetos
+              </a>
+              <a href="#contato" class="btn-outline-accent">
+                <i class="fas fa-paper-plane"></i> Contato
+              </a>
+              <a href="https://github.com/rafaelgoesti" target="_blank" class="btn-outline-accent">
+                <i class="fab fa-github"></i> GitHub
+              </a>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-number" data-target="4">0</div>
+                <div class="stat-label">Anos codando</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="10">0</div>
+                <div class="stat-label">Projetos</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number" data-target="15">0</div>
+                <div class="stat-label">Tecnologias</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
- <!-- Seção de tecnologias -->
-<section id="tecnologias" class="container my-5 py-5">
-    <h2 class="section-title text-center">Tecnologias e Ferramentas</h2>
-    <div class="row tech-section">
-      <div class="col-md-6">
-        <h4>Back-End</h4>
-        <ul class="tech-list">
-          <li><img title="Python" alt="Python" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg"> Python</li>
-          <li><img title="Flask" alt="Flask" width="40px" src="https://img.icons8.com/ios-filled/FFFFFF/flask.png"> Flask</li>
-          <li><img src="images/logo-django.png" alt=""> Django</li>
-          <li><img title="PHP" alt="PHP" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg"> PHP</li>
-          <li><img title="C" alt="C" width="40px" src="https://raw.githubusercontent.com/github/explore/master/topics/c/c.png"> C</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h4>Banco de Dados</h4>
-        <ul class="tech-list">
-          <li><img title="MySQL" alt="MySQL" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg"> MySQL</li>
-          <li><img title="SQLite" alt="SQLite" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg"> SQLite</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row mt-4 tech-section">
-      <div class="col-md-6">
-        <h4>Front-End</h4>
-        <ul class="tech-list">
-          <li><img title="HTML" alt="HTML" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"> HTML5</li>
-          <li><img title="CSS" alt="CSS" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg"> CSS3</li>
-          <li><img title="JavaScript" alt="JavaScript" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg"> JavaScript</li>
-          <li><img title="Bootstrap" alt="Bootstrap" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg"> Bootstrap</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h4>Controle de Versão</h4>
-        <ul class="tech-list">
-          <li><img title="Git" alt="Git" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg"> Git</li>
-          <li><img title="GitHub" alt="GitHub" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg"> GitHub</li>
-        </ul>
-      </div>
-    </div>
-    <div class="row mt-4 tech-section">
-      <div class="col-md-6">
-        <h4>DevOps</h4>
-        <ul class="tech-list">
-          <li><img title="Docker" alt="Docker" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg"> Docker</li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h4>IDEs</h4>
-        <ul class="tech-list">
-          <li><img title="VS Code" alt="VS Code" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg"> VS Code</li>
-          <li><img title="Visual Studio" alt="Visual Studio" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/visualstudio/visualstudio-plain.svg"> Visual Studio</li>
-          <li><img title="PyCharm" alt="PyCharm" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pycharm/pycharm-original.svg"> PyCharm</li>
-          <li><img title="PHPStorm" alt="PHPStorm" width="40px" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/phpstorm/phpstorm-original.svg"> PHPStorm</li>
-        </ul>
+  <!-- ===== SOBRE ===== -->
+  <section id="sobre">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0" data-aos="fade-right">
+          <div class="profile-card">
+            <img src="images/foto-perfil.jpeg" class="profile-img" alt="Rafael Góes Duarte">
+            <div class="profile-name">Rafael Góes Duarte</div>
+            <div class="profile-role">&gt; FullStack Developer</div>
+            <div class="social-icons">
+              <a href="https://www.linkedin.com/in/rafael-g%C3%B3es-duarte-10709332a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://github.com/rafaelgoesti" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://www.instagram.com/rafaelgoesti/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:rafaelgoesti2021@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="profile-badge"><i class="fas fa-map-marker-alt"></i> Belém, Pará — Brasil</div>
+            <div class="profile-badge"><i class="fas fa-graduation-cap"></i> UNAMA — Ciência da Computação</div>
+            <div class="profile-badge"><i class="fas fa-circle" style="color:#28c840;font-size:0.6rem"></i> Disponível para oportunidades</div>
+          </div>
+        </div>
+        <div class="col-lg-8" data-aos="fade-left">
+          <div class="section-title">Sobre Mim</div>
+          <div class="section-line"></div>
+          <div class="section-subtitle">Conheça um pouco da minha trajetória</div>
+          <p class="about-text">
+            Olá! Sou <strong>Rafael Góes Duarte</strong>, estudante de <strong>Ciência da Computação</strong> e apaixonado por
+            <strong>tecnologia</strong>, <strong>inovação</strong> e <strong>educação</strong>. Desde que comecei na área, sempre
+            me interessei por entender como a <strong>tecnologia</strong> pode ser usada para resolver <strong>problemas reais</strong>
+            e gerar <strong>impacto positivo</strong> na sociedade.
+          </p>
+          <p class="about-text">
+            Atualmente curso <strong>Ciência da Computação</strong> na <strong>Universidade da Amazônia (UNAMA)</strong>, onde venho
+            aprofundando meus conhecimentos em <strong>engenharia de software</strong> e <strong>desenvolvimento de sistemas</strong>.
+            Ao longo da minha formação, venho trabalhando com <strong>desenvolvimento full stack</strong>, <strong>banco de dados</strong>,
+            <strong>redes de computadores</strong> e criação de <strong>APIs RESTful</strong>, sempre buscando aplicar na prática
+            aquilo que aprendo.
+          </p>
+          <p class="about-text">
+            Também atuei como <strong>líder técnico</strong> no desenvolvimento de <strong>sistemas para órgãos públicos do estado do Pará</strong>,
+            liderando equipes e entregando soluções tecnológicas para instituições como o
+            <strong>2º Batalhão de Infantaria de Selva do Exército Brasileiro (2º BIS)</strong>,
+            o <strong>Batalhão de Polícia Ambiental (BPA)</strong> e a
+            <strong>Secretaria de Segurança Pública e Defesa Social do Pará (SEGUP)</strong>.
+          </p>
+          <p class="about-text">
+            Gosto de participar de projetos <strong>desafiadores</strong> e de construir soluções que realmente possam ser utilizadas
+            no dia a dia das pessoas e das instituições. Estou em constante aprendizado e acredito que a <strong>tecnologia</strong>,
+            quando bem aplicada, pode ser uma ferramenta poderosa para <strong>melhorar a sociedade</strong>.
+          </p>
+          <div class="row mt-4 g-3">
+            <div class="col-sm-6">
+              <div class="profile-badge"><i class="fas fa-code"></i><div><div style="color:white;font-size:0.82rem">Back-End &amp; Front-End</div><div style="font-size:0.7rem">Python, Flask, Django, PHP, HTML/CSS/JS</div></div></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="profile-badge"><i class="fas fa-database"></i><div><div style="color:white;font-size:0.82rem">Banco de Dados</div><div style="font-size:0.7rem">MySQL, SQLite, PostgreSQL</div></div></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="profile-badge"><i class="fas fa-mobile-alt"></i><div><div style="color:white;font-size:0.82rem">Mobile</div><div style="font-size:0.7rem">Flutter (Dart)</div></div></div>
+            </div>
+            <div class="col-sm-6">
+              <div class="profile-badge"><i class="fab fa-docker"></i><div><div style="color:white;font-size:0.82rem">DevOps</div><div style="font-size:0.7rem">Docker, Git, GitHub</div></div></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Seção de contato -->
-  <section id="contato" class="container my-5 py-5 contact-section">
-    <h2 class="section-title text-center">Contato</h2>
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Seu Nome" required>
+  <!-- ===== FORMAÇÃO / EXPERIÊNCIA ===== -->
+  <section id="formacao">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="section-title">Formação &amp; Experiência</div>
+          <div class="section-line mx-auto"></div>
+          <div class="section-subtitle">Minha trajetória acadêmica e profissional</div>
+        </div>
+      </div>
+      <div class="row g-5">
+        <div class="col-md-6" data-aos="fade-right">
+          <h5 class="tech-category-title"><i class="fas fa-graduation-cap me-2" style="color:var(--accent)"></i>Formação Acadêmica</h5>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2023 — Presente</div>
+                <div class="timeline-title">Bacharelado em Ciência da Computação</div>
+                <div class="timeline-subtitle">Universidade da Amazônia — UNAMA | Belém, PA</div>
+                <div class="timeline-desc">Cursando, com foco em engenharia de software, estruturas de dados, redes e desenvolvimento de sistemas.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2021 — 2022</div>
+                <div class="timeline-title">Ensino Médio Técnico em Informática</div>
+                <div class="timeline-subtitle">Instituto Federal do Pará — IFPA</div>
+                <div class="timeline-desc">Formação técnica base em programação, redes e infraestrutura de TI.</div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <input type="email" class="form-control" placeholder="Seu E-mail" required>
+        </div>
+        <div class="col-md-6" data-aos="fade-left">
+          <h5 class="tech-category-title"><i class="fas fa-briefcase me-2" style="color:var(--accent)"></i>Experiência &amp; Projetos de Destaque</h5>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2024</div>
+                <div class="timeline-title">CAD-MED App — Projeto de Extensão</div>
+                <div class="timeline-subtitle">UNAMA | Flutter &amp; Firebase</div>
+                <div class="timeline-desc">Aplicativo mobile para registro de pessoas atendidas nos postos da Defesa Civil durante o Círio de Nazaré 2024.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2023</div>
+                <div class="timeline-title">Sistema de Gestão de Clientes</div>
+                <div class="timeline-subtitle">Python · Flask · Bootstrap · JavaScript</div>
+                <div class="timeline-desc">Sistema web completo para cadastro de clientes e gestão de contratos com autenticação e relatórios.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2022</div>
+                <div class="timeline-title">Gerenciador de Estoque</div>
+                <div class="timeline-subtitle">PHP · HTML · CSS · MySQL</div>
+                <div class="timeline-desc">Sistema de controle de estoque com CRUD completo, relatórios e interface responsiva.</div>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <textarea class="form-control" rows="5" placeholder="Sua Mensagem" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block">Enviar Mensagem</button>
-        </form>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer class="text-center">
-    <p>&copy; 2025 Rafael Góes. Todos os direitos reservados.</p>
+  <!-- ===== PROJETOS ===== -->
+  <section id="projetos">
+    <div class="container">
+      <div class="row justify-content-center mb-2">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="section-title">Meus Projetos</div>
+          <div class="section-line mx-auto"></div>
+          <div class="section-subtitle">Sistemas desenvolvidos — clique nas imagens para ver os screenshots</div>
+        </div>
+      </div>
+      <div class="filter-tabs justify-content-center d-flex" data-aos="fade-up">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+        <button class="filter-btn" data-filter="api">API / Backend</button>
+      </div>
+      <div class="row g-4" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- Modal de Screenshots -->
+  <div class="modal fade" id="screenshotsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle"></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="screenshotsCarousel" class="carousel slide" data-bs-ride="false">
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+            <div class="carousel-inner" id="carouselInner"></div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#screenshotsCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#screenshotsCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="modal-project-info">
+            <div class="modal-project-title" id="modalProjectTitle"></div>
+            <p class="modal-project-desc" id="modalProjectDesc"></p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="tech-badges" id="modalTechBadges"></div>
+          <a href="#" id="modalGithubLink" target="_blank" class="btn-accent ms-auto" style="font-size:0.8rem;padding:8px 16px">
+            <i class="fab fa-github"></i> Ver no GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TECNOLOGIAS ===== -->
+  <section id="tecnologias">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="section-title">Tecnologias &amp; Ferramentas</div>
+          <div class="section-line mx-auto"></div>
+          <div class="section-subtitle">Stack de desenvolvimento que utilizo no dia a dia</div>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="0">
+          <div class="tech-category-title">Back-End</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"> Python</div>
+            <div class="tech-item"><img src="https://img.icons8.com/ios-filled/FFFFFF/flask.png" alt="Flask"> Flask</div>
+            <div class="tech-item"><img src="images/logo-django.png" alt="Django"> Django</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="PHP"> PHP</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/github/explore/master/topics/c/c.png" alt="C"> C</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="tech-category-title">Front-End</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5"> HTML5</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS3"> CSS3</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"> Bootstrap</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+          <div class="tech-category-title">Banco de Dados</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg" alt="SQLite"> SQLite</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"> PostgreSQL</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
+          <div class="tech-category-title">Mobile</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" alt="Flutter"> Flutter</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg" alt="Dart"> Dart</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
+          <div class="tech-category-title">DevOps &amp; Versionamento</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker"> Docker</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git"> Git</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1)"> GitHub</div>
+          </div>
+        </div>
+        <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
+          <div class="tech-category-title">IDEs &amp; Ferramentas</div>
+          <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VS Code"> VS Code</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pycharm/pycharm-original.svg" alt="PyCharm"> PyCharm</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/phpstorm/phpstorm-original.svg" alt="PHPStorm"> PHPStorm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTATO ===== -->
+  <section id="contato">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center" data-aos="fade-up">
+          <div class="section-title">Vamos Conversar?</div>
+          <div class="section-line mx-auto"></div>
+          <div class="section-subtitle">Estou disponível para oportunidades e colaborações</div>
+        </div>
+      </div>
+      <div class="row g-4 justify-content-center">
+        <div class="col-lg-5" data-aos="fade-right">
+          <div class="contact-card h-100">
+            <h5 style="color:var(--accent);margin-bottom:24px;font-size:0.9rem">&gt; Informações de Contato</h5>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <div class="contact-info-label">E-mail</div>
+                <div class="contact-info-value"><a href="mailto:rafaelgoesti2021@gmail.com">rafaelgoesti2021@gmail.com</a></div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fab fa-linkedin-in"></i></div>
+              <div>
+                <div class="contact-info-label">LinkedIn</div>
+                <div class="contact-info-value"><a href="https://www.linkedin.com/in/rafael-g%C3%B3es-duarte-10709332a/" target="_blank">Rafael Góes Duarte</a></div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <div class="contact-info-label">GitHub</div>
+                <div class="contact-info-value"><a href="https://github.com/rafaelgoesti" target="_blank">@rafaelgoesti</a></div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <div class="contact-info-label">Localização</div>
+                <div class="contact-info-value">Belém, Pará — Brasil</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6" data-aos="fade-left">
+          <div class="contact-card">
+            <h5 style="color:var(--accent);margin-bottom:24px;font-size:0.9rem">&gt; Enviar Mensagem</h5>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label">Nome</label>
+                <input type="text" class="form-control" placeholder="Seu nome completo" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">E-mail</label>
+                <input type="email" class="form-control" placeholder="seu@email.com" required>
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Assunto</label>
+                <input type="text" class="form-control" placeholder="Proposta, dúvida, colaboração...">
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Mensagem</label>
+                <textarea class="form-control" rows="5" placeholder="Escreva sua mensagem..." required></textarea>
+              </div>
+              <button type="submit" class="btn-accent w-100" style="justify-content:center;padding:13px">
+                <i class="fas fa-paper-plane"></i> Enviar Mensagem
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <p class="footer-text mb-1">
+        Feito com <span>&#10084;</span> por <span>Rafael Góes Duarte</span>
+      </p>
+      <p class="footer-text" style="font-size:0.75rem">
+        &copy; <span id="year"></span> — Todos os direitos reservados
+      </p>
+    </div>
   </footer>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- AOS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 
-  <!-- Bootstrap JS e dependências -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // ============================================================
+    // DADOS DOS PROJETOS
+    // Para adicionar um novo projeto: copie um objeto abaixo e edite.
+    // Para adicionar screenshots: adicione caminhos no array "screenshots".
+    // ============================================================
+    const PROJECTS = [
+      {
+        id: 1,
+        title: "My Portfolio",
+        category: "web",
+        categoryLabel: "Web",
+        description: "Portfólio profissional desenvolvido com HTML, CSS e JavaScript puro. Apresenta projetos, tecnologias e trajetória na área de tecnologia de forma responsiva e moderna.",
+        technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
+        githubUrl: "https://github.com/rafaelgoesti/meu-portfolio",
+        thumbnail: "images/portifolio.png",
+        screenshots: [
+          "images/portifolio.png"
+          // Adicione mais prints aqui: "images/portfolio-2.png"
+        ]
+      },
+      {
+        id: 2,
+        title: "Sistema de Gestão de Clientes",
+        category: "web",
+        categoryLabel: "Web / API",
+        description: "Sistema web completo para cadastro de clientes e gestão de contratos. Conta com autenticação, relatórios, painel administrativo e API RESTful.",
+        technologies: ["Python", "Flask", "Bootstrap", "JavaScript", "MySQL"],
+        githubUrl: "#",
+        thumbnail: "images/gestao-cliente.jpeg",
+        screenshots: [
+          "images/gestao-cliente.jpeg"
+          // Adicione mais prints aqui
+        ]
+      },
+      {
+        id: 3,
+        title: "CAD-MED App",
+        category: "mobile",
+        categoryLabel: "Mobile",
+        description: "Aplicativo mobile em Flutter para registro e gerenciamento de pessoas atendidas nos postos da Defesa Civil durante o Círio de Nazaré 2024.",
+        technologies: ["Flutter", "Dart", "Firebase"],
+        githubUrl: "https://github.com/CAD-MED/Projeto-de-extensao-CAD-MED",
+        thumbnail: "images/cad-med.png",
+        screenshots: [
+          "images/cad-med.png",
+          "images/cadmed.png"
+          // Adicione mais prints aqui
+        ]
+      },
+      {
+        id: 4,
+        title: "Gerenciador de Estoque",
+        category: "web",
+        categoryLabel: "Web",
+        description: "Sistema de gerenciamento de estoque com funcionalidades de visualizar, adicionar, editar, excluir e gerar relatórios de produtos.",
+        technologies: ["PHP", "HTML5", "CSS3", "MySQL"],
+        githubUrl: "#",
+        thumbnail: "images/controle-estoque.png",
+        screenshots: [
+          "images/controle-estoque.png"
+          // Adicione mais prints aqui
+        ]
+      }
+      // =========================================================
+      // NOVO PROJETO — descomente e preencha para adicionar:
+      // {
+      //   id: 5,
+      //   title: "Nome do Sistema",
+      //   category: "web",          // "web" | "mobile" | "api"
+      //   categoryLabel: "Web",
+      //   description: "Descrição do sistema...",
+      //   technologies: ["Tech1", "Tech2"],
+      //   githubUrl: "https://github.com/...",
+      //   thumbnail: "images/print-principal.png",
+      //   screenshots: [
+      //     "images/print-1.png",
+      //     "images/print-2.png",
+      //     "images/print-3.png"
+      //   ]
+      // }
+      // =========================================================
+    ];
 
-    <script>
-    const sections = document.querySelectorAll('.tech-section');
-    
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate__animated', 'animate__fadeInUp');
-            observer.unobserve(entry.target);
-        }
-        });
-    }, { threshold: 0.5 });
+    // ============================================================
+    // RENDERIZAÇÃO DOS PROJETOS
+    // ============================================================
+    function renderProjects(filter) {
+      const grid = document.getElementById('projects-grid');
+      grid.innerHTML = '';
+      const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+      list.forEach((p, i) => {
+        const col = document.createElement('div');
+        col.className = 'col-md-6 col-lg-4';
+        col.setAttribute('data-aos', 'fade-up');
+        col.setAttribute('data-aos-delay', (i % 3) * 100);
+        const noGitHub = p.githubUrl === '#';
+        col.innerHTML = `
+          <div class="project-card">
+            <div class="project-thumb-wrapper" onclick="openScreenshots(${p.id})">
+              <img src="${p.thumbnail}" class="project-thumb" alt="${p.title}" loading="lazy">
+              <div class="project-thumb-overlay"><span><i class="fas fa-images me-1"></i>Ver Screenshots</span></div>
+              ${p.screenshots.length > 1 ? `<div class="screenshot-count-badge"><i class="fas fa-images"></i>${p.screenshots.length} prints</div>` : ''}
+            </div>
+            <div class="project-body">
+              <div class="project-category">${p.categoryLabel}</div>
+              <div class="project-title">${p.title}</div>
+              <p class="project-desc">${p.description}</p>
+              <div class="tech-badges">${p.technologies.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
+              <div class="project-actions">
+                <button class="btn-project-primary" onclick="openScreenshots(${p.id})">
+                  <i class="fas fa-images me-1"></i>Screenshots
+                </button>
+                <a href="${p.githubUrl}" ${!noGitHub ? 'target="_blank"' : 'onclick="return false"'}
+                   class="btn-project-secondary" ${noGitHub ? 'style="opacity:0.4;cursor:not-allowed"' : ''}>
+                  <i class="fab fa-github me-1"></i>GitHub
+                </a>
+              </div>
+            </div>
+          </div>`;
+        grid.appendChild(col);
+      });
+      AOS.refresh();
+    }
 
-    sections.forEach(section => {
-        observer.observe(section);
+    // ============================================================
+    // MODAL DE SCREENSHOTS
+    // ============================================================
+    function openScreenshots(id) {
+      const p = PROJECTS.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('modalTitle').textContent = '📸 ' + p.title;
+      document.getElementById('modalProjectTitle').textContent = p.title;
+      document.getElementById('modalProjectDesc').textContent = p.description;
+      document.getElementById('modalTechBadges').innerHTML = p.technologies.map(t => `<span class="tech-badge">${t}</span>`).join('');
+      const link = document.getElementById('modalGithubLink');
+      link.href = p.githubUrl;
+      link.style.opacity = p.githubUrl === '#' ? '0.4' : '1';
+      link.style.pointerEvents = p.githubUrl === '#' ? 'none' : 'auto';
+      const inner = document.getElementById('carouselInner');
+      const indicators = document.getElementById('carouselIndicators');
+      inner.innerHTML = '';
+      indicators.innerHTML = '';
+      p.screenshots.forEach((src, idx) => {
+        const item = document.createElement('div');
+        item.className = 'carousel-item' + (idx === 0 ? ' active' : '');
+        item.innerHTML = `<img src="${src}" class="d-block" alt="Screenshot ${idx+1}">`;
+        inner.appendChild(item);
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.setAttribute('data-bs-target', '#screenshotsCarousel');
+        btn.setAttribute('data-bs-slide-to', idx);
+        if (idx === 0) { btn.classList.add('active'); btn.setAttribute('aria-current', 'true'); }
+        indicators.appendChild(btn);
+      });
+      indicators.style.display = p.screenshots.length <= 1 ? 'none' : 'flex';
+      new bootstrap.Modal(document.getElementById('screenshotsModal')).show();
+    }
+
+    // ============================================================
+    // FILTROS
+    // ============================================================
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderProjects(btn.dataset.filter);
+      });
     });
-    </script>
 
+    // ============================================================
+    // AOS
+    // ============================================================
+    AOS.init({ duration: 700, once: true, offset: 60 });
+
+    // ============================================================
+    // SCROLL: barra de progresso, navbar, active nav, back to top
+    // ============================================================
+    window.addEventListener('scroll', () => {
+      const st = document.documentElement.scrollTop;
+      const sh = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById('progress-bar').style.width = (st / sh * 100) + '%';
+      document.querySelector('.navbar').classList.toggle('scrolled', st > 50);
+      document.getElementById('back-to-top').classList.toggle('visible', st > 300);
+      ['sobre','formacao','projetos','tecnologias','contato'].forEach(id => {
+        const el = document.getElementById(id);
+        const link = document.querySelector(`.nav-link[href="#${id}"]`);
+        if (el && link) {
+          const r = el.getBoundingClientRect();
+          link.classList.toggle('active', r.top <= 100 && r.bottom >= 100);
+        }
+      });
+    });
+
+    // ============================================================
+    // CONTADORES
+    // ============================================================
+    const heroObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+            const target = +el.dataset.target;
+            let cur = 0;
+            const step = Math.ceil(target / 40);
+            const timer = setInterval(() => {
+              cur += step;
+              if (cur >= target) { cur = target; clearInterval(timer); }
+              el.textContent = cur + '+';
+            }, 40);
+          });
+          heroObs.disconnect();
+        }
+      });
+    }, { threshold: 0.5 });
+    heroObs.observe(document.querySelector('.hero-stats'));
+
+    // ============================================================
+    // ANO NO FOOTER
+    // ============================================================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ============================================================
+    // FORMULÁRIO
+    // ============================================================
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const btn = this.querySelector('button[type=submit]');
+      btn.innerHTML = '<i class="fas fa-check me-2"></i>Mensagem enviada!';
+      btn.style.background = '#28c840';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Mensagem';
+        btn.style.background = '';
+        this.reset();
+      }, 3000);
+    });
+
+    // ============================================================
+    // RENDER INICIAL
+    // ============================================================
+    renderProjects('all');
+  </script>
 </body>
 </html>
