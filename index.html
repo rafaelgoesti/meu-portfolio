@@ -126,7 +126,8 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       overflow: hidden;
-      max-width: 820px;
+      /* Aumentado para aproveitar largura em telas maiores */
+      max-width: 1400px;
       width: 100%;
       box-shadow: var(--shadow), 0 0 80px rgba(255,221,86,0.05);
     }
@@ -151,7 +152,7 @@
       margin-left: auto;
     }
     .terminal-body {
-      padding: 32px 36px;
+      padding: 48px 64px;
     }
     .terminal-line {
       line-height: 1.8;
@@ -160,11 +161,12 @@
     .terminal-prompt { color: #28c840; }
     .terminal-cmd    { color: var(--text-muted); }
     .terminal-output-name {
-      font-size: 2.6rem;
+      font-size: 3.4rem;
       font-weight: 700;
       color: var(--text-primary);
-      line-height: 1.15;
-      margin: 10px 0 6px;
+      line-height: 1.05;
+      margin: 8px 0 6px;
+      letter-spacing: -0.6px;
     }
     .terminal-output-name span { color: var(--accent); }
     .terminal-role {
@@ -290,12 +292,15 @@
       top: 90px;
     }
     .profile-img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
+      width: 180px;
+      height: 180px;
+      border-radius: 12px;
       object-fit: cover;
       border: 3px solid var(--accent);
       box-shadow: 0 0 30px rgba(255,221,86,0.2);
+      /* reduzir levemente o zoom da imagem */
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
     }
     .profile-name {
       font-size: 1.2rem;
@@ -836,7 +841,7 @@
               <span class="terminal-cmd"> $ whoami</span>
             </div>
             <div class="terminal-output-name">
-              Rafael <span>Góes</span> Duarte<span class="cursor-blink"></span>
+              <span id="typedName"></span><span class="cursor-blink" id="typedCursor"></span>
             </div>
             <div class="terminal-role">&gt; Desenvolvedor Full Stack | Cientista da Computação | Engenheiro de Software</div>
             <p class="terminal-desc">
@@ -897,7 +902,7 @@
               <a href="mailto:rafaelgoesti2021@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="profile-badge"><i class="fas fa-map-marker-alt"></i> Belém, Pará — Brasil</div>
-            <div class="profile-badge"><i class="fas fa-graduation-cap"></i> UNAMA — Ciência da Computação</div>
+            <div class="profile-badge"><i class="fas fa-graduation-cap"></i> UNAMA — Ciência da Computação (em andamento, conclusão prevista: 2028)</div>
             <div class="profile-badge"><i class="fas fa-circle" style="color:#28c840;font-size:0.6rem"></i> Disponível para oportunidades</div>
           </div>
         </div>
@@ -921,8 +926,7 @@
           <p class="about-text">
             Também atuei como <strong>líder técnico</strong> no desenvolvimento de <strong>sistemas para órgãos públicos do estado do Pará</strong>,
             liderando equipes e entregando soluções tecnológicas para instituições como o
-            <strong>2º Batalhão de Infantaria de Selva do Exército Brasileiro (2º BIS)</strong>,
-            o <strong>Batalhão de Polícia Ambiental (BPA)</strong> e a
+            <strong>2º Batalhão de Infantaria de Selva (2º BIS)</strong>, o <strong>Batalhão de Polícia Ambiental (BPA)</strong> e a
             <strong>Secretaria de Segurança Pública e Defesa Social do Pará (SEGUP)</strong>.
           </p>
           <p class="about-text">
@@ -932,7 +936,7 @@
           </p>
           <div class="row mt-4 g-3">
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fas fa-code"></i><div><div style="color:white;font-size:0.82rem">Back-End &amp; Front-End</div><div style="font-size:0.7rem">Python, Flask, Django, PHP, HTML/CSS/JS</div></div></div>
+              <div class="profile-badge"><i class="fas fa-code"></i><div><div style="color:white;font-size:0.82rem">Back-End &amp; Front-End</div><div style="font-size:0.7rem">Java, Spring Boot, TypeScript, NestJS, Node, Python, Flask, Django, FastAPI, React</div></div></div>
             </div>
             <div class="col-sm-6">
               <div class="profile-badge"><i class="fas fa-database"></i><div><div style="color:white;font-size:0.82rem">Banco de Dados</div><div style="font-size:0.7rem">MySQL, SQLite, PostgreSQL</div></div></div>
@@ -941,7 +945,7 @@
               <div class="profile-badge"><i class="fas fa-mobile-alt"></i><div><div style="color:white;font-size:0.82rem">Mobile</div><div style="font-size:0.7rem">Flutter (Dart)</div></div></div>
             </div>
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fab fa-docker"></i><div><div style="color:white;font-size:0.82rem">DevOps</div><div style="font-size:0.7rem">Docker, Git, GitHub</div></div></div>
+              <div class="profile-badge"><i class="fab fa-docker"></i><div><div style="color:white;font-size:0.82rem">DevOps</div><div style="font-size:0.7rem">Docker, Git, GitHub, AWS, Terraform</div></div></div>
             </div>
           </div>
         </div>
@@ -960,32 +964,54 @@
         </div>
       </div>
       <div class="row g-5">
-        <div class="col-md-6" data-aos="fade-right">
-          <h5 class="tech-category-title"><i class="fas fa-graduation-cap me-2" style="color:var(--accent)"></i>Formação Acadêmica</h5>
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
-              <div class="timeline-card">
-                <div class="timeline-period">2023 — Presente</div>
-                <div class="timeline-title">Bacharelado em Ciência da Computação</div>
-                <div class="timeline-subtitle">Universidade da Amazônia — UNAMA | Belém, PA</div>
-                <div class="timeline-desc">Cursando, com foco em engenharia de software, estruturas de dados, redes e desenvolvimento de sistemas.</div>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
-              <div class="timeline-card">
-                <div class="timeline-period">2021 — 2022</div>
-                <div class="timeline-title">Ensino Médio Técnico em Informática</div>
-                <div class="timeline-subtitle">Instituto Federal do Pará — IFPA</div>
-                <div class="timeline-desc">Formação técnica base em programação, redes e infraestrutura de TI.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
+        <div class="col-12" data-aos="fade-up">
           <h5 class="tech-category-title"><i class="fas fa-briefcase me-2" style="color:var(--accent)"></i>Experiência &amp; Projetos de Destaque</h5>
           <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">Janeiro 2025 — Presente</div>
+                <div class="timeline-title">Presidente &amp; Líder Técnico - DevLink (Liga Acadêmica)</div>
+                <div class="timeline-subtitle">DevLink - Universidade da Amazônia - UNAMA</div>
+                <div class="timeline-desc">Liderança técnica de equipes de 10-25 desenvolvedores; definição de arquitetura, pilhas tecnológicas, integração de dados e articulação com stakeholders. Entrega de 3 sistemas em produção, documentação arquitetural e pipelines de análise de dados.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">Janeiro 2025 — Presente</div>
+                <div class="timeline-title">Desenvolvedor Líder - DevLink</div>
+                <div class="timeline-subtitle">Fullstack &amp; Mentoria</div>
+                <div class="timeline-desc">Desenvolvimento fullstack de aplicações web e mobile; implementação de módulos críticos (React, NestJS), integração de APIs, autenticação e mentoria de desenvolvedores juniores.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2025 — 2026</div>
+                <div class="timeline-title">SistemaBPA — Batalhão de Policiamento Ambiental do Pará</div>
+                <div class="timeline-subtitle">Líder Técnico &amp; Desenvolvedor Fullstack</div>
+                <div class="timeline-desc">Sistema para gestão de ocorrências de fauna silvestre (resgate a reintegração). Arquitetura completa: React, TypeScript, NestJS, PostgreSQL, Prisma, Redis e MinIO. Responsável por concepção, integração e visualização de dados.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2025</div>
+                <div class="timeline-title">CheckIn SEGUP — Secretaria de Segurança Pública do Pará</div>
+                <div class="timeline-subtitle">Arquiteto de Sistemas &amp; DevOps</div>
+                <div class="timeline-desc">Sistema de gestão de acesso com foco em auditoria e compliance. Infraestrutura em AWS via Terraform (ECS Fargate, RDS Multi-AZ, ElastiCache, CloudFront, WAF) e integração multi-bases.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2025</div>
+                <div class="timeline-title">CheckIn Exército — 2º Batalhão de Infantaria de Selva</div>
+                <div class="timeline-subtitle">Desenvolvedor Fullstack</div>
+                <div class="timeline-desc">Sistema de controle de acesso militar com check-in via QR Code, autorizações de saída e dashboards em tempo real (NestJS, PostgreSQL, Socket.io, React, Flutter).</div>
+              </div>
+            </div>
             <div class="timeline-item">
               <div class="timeline-dot"><i class="fas fa-circle"></i></div>
               <div class="timeline-card">
@@ -1026,7 +1052,7 @@
         <div class="col-lg-8 text-center" data-aos="fade-up">
           <div class="section-title">Meus Projetos</div>
           <div class="section-line mx-auto"></div>
-          <div class="section-subtitle">Sistemas desenvolvidos — clique nas imagens para ver os screenshots</div>
+          <div class="section-subtitle">Sistemas desenvolvidos - clique nas imagens para ver os screenshots</div>
         </div>
       </div>
       <div class="filter-tabs justify-content-center d-flex" data-aos="fade-up">
@@ -1044,10 +1070,11 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle"></h5>
+            <div class="section-title">Experiência &amp; Projetos de Destaque</div>
           <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <div class="section-subtitle">Minha trajetória profissional e projetos relevantes</div>
         </div>
-        <div class="modal-body">
+      <div class="modal-body">
           <div id="screenshotsCarousel" class="carousel slide" data-bs-ride="false">
             <div class="carousel-indicators" id="carouselIndicators"></div>
             <div class="carousel-inner" id="carouselInner"></div>
@@ -1086,22 +1113,24 @@
       <div class="row g-4">
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="0">
           <div class="tech-category-title">Back-End</div>
-          <div class="tech-grid">
+            <div class="tech-grid">
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python"> Python</div>
             <div class="tech-item"><img src="https://img.icons8.com/ios-filled/FFFFFF/flask.png" alt="Flask"> Flask</div>
             <div class="tech-item"><img src="images/logo-django.png" alt="Django"> Django</div>
-            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/php/php-original.svg" alt="PHP"> PHP</div>
-            <div class="tech-item"><img src="https://raw.githubusercontent.com/github/explore/master/topics/c/c.png" alt="C"> C</div>
-          </div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="Java"> Java</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" alt="Spring Boot"> Spring Boot</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript"> TypeScript</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-original.svg" alt="NestJS"> NestJS</div>
+            </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="tech-category-title">Front-End</div>
-          <div class="tech-grid">
-            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="HTML5"> HTML5</div>
-            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" alt="CSS3"> CSS3</div>
+            <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React"> React</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript"> TypeScript</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"> Bootstrap</div>
-          </div>
+            </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
           <div class="tech-category-title">Banco de Dados</div>
@@ -1120,11 +1149,13 @@
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
           <div class="tech-category-title">DevOps &amp; Versionamento</div>
-          <div class="tech-grid">
+            <div class="tech-grid">
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt="Docker"> Docker</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt="Git"> Git</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1)"> GitHub</div>
-          </div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" alt="Terraform"> Terraform</div>
+            </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
           <div class="tech-category-title">IDEs &amp; Ferramentas</div>
@@ -1132,6 +1163,9 @@
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vscode/vscode-original.svg" alt="VS Code"> VS Code</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/pycharm/pycharm-original.svg" alt="PyCharm"> PyCharm</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/phpstorm/phpstorm-original.svg" alt="PHPStorm"> PHPStorm</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/intellij/intellij-original.svg" alt="IntelliJ IDEA"> IntelliJ IDEA</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/datagrip/datagrip-original.svg" alt="DataGrip"> DataGrip</div>
+            <div class="tech-item"><img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman"> Postman</div>
           </div>
         </div>
       </div>
@@ -1237,6 +1271,51 @@
     // ============================================================
     const PROJECTS = [
       {
+        id: 5,
+        title: "SistemaBPA - Gestão Ambiental",
+        category: "web",
+        categoryLabel: "Web / Corporativo",
+        description: "Sistema completo para gestão de ocorrências de fauna silvestre (resgate a reintegração), com dashboards analíticos e integração de dados.",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Vite", "NestJS", "PostgreSQL", "Prisma", "Redis", "MinIO"],
+        githubUrl: "#",
+        thumbnail: "images/sistemabpa.png",
+        screenshots: [
+          "images/bpa-dashboar.png",
+          "images/bpa-mapaanalitico.png",
+          "images/bpa-indicadores.png"
+        ]
+      },
+      {
+        id: 6,
+        title: "CheckIn SEGUP",
+        category: "web",
+        categoryLabel: "Infra & DevOps",
+        description: "Sistema de gestão de acesso para órgão de segurança pública com foco em auditoria, compliance e alta disponibilidade na AWS (Terraform).",
+        technologies: ["NestJS", "PostgreSQL", "Prisma", "Redis", "Terraform", "AWS", "React", "Flutter"],
+        githubUrl: "#",
+        thumbnail: "images/checkin-segup.png",
+        screenshots: [
+          "images/segup-login.png",
+          "images/segup-dashboard.png",
+          "images/segup-servidores.png",
+          "images/segup-auditoria.png"
+        ]
+      },
+      {
+        id: 7,
+        title: "CheckIn Exército (2º BIS)",
+        category: "mobile",
+        categoryLabel: "Mobile / Real-time",
+        description: "Controle de acesso militar com check-in por QR Code, autorizações e dashboards em tempo real (Socket.io, Flutter).",
+        technologies: ["NestJS", "PostgreSQL", "Socket.io", "React", "Flutter"],
+        githubUrl: "#",
+        thumbnail: "images/checkin-exercito.png",
+        screenshots: [
+          "images/bis-app001.png",
+          "images/bis-app002.png",
+        ]
+      },
+      {
         id: 1,
         title: "My Portfolio",
         category: "web",
@@ -1292,7 +1371,8 @@
           "images/controle-estoque.png"
           // Adicione mais prints aqui
         ]
-      }
+      },
+      
       // =========================================================
       // NOVO PROJETO — descomente e preencha para adicionar:
       // {
@@ -1329,7 +1409,7 @@
         col.innerHTML = `
           <div class="project-card">
             <div class="project-thumb-wrapper" onclick="openScreenshots(${p.id})">
-              <img src="${p.thumbnail}" class="project-thumb" alt="${p.title}" loading="lazy">
+              <img src="${(p.screenshots && p.screenshots.length) ? p.screenshots[0] : p.thumbnail}" class="project-thumb" alt="${p.title}" loading="lazy">
               <div class="project-thumb-overlay"><span><i class="fas fa-images me-1"></i>Ver Screenshots</span></div>
               ${p.screenshots.length > 1 ? `<div class="screenshot-count-badge"><i class="fas fa-images"></i>${p.screenshots.length} prints</div>` : ''}
             </div>
@@ -1360,7 +1440,8 @@
     function openScreenshots(id) {
       const p = PROJECTS.find(x => x.id === id);
       if (!p) return;
-      document.getElementById('modalTitle').textContent = '📸 ' + p.title;
+      const modalTitleEl = document.getElementById('modalTitle');
+      if (modalTitleEl) modalTitleEl.textContent = '📸 ' + p.title;
       document.getElementById('modalProjectTitle').textContent = p.title;
       document.getElementById('modalProjectDesc').textContent = p.description;
       document.getElementById('modalTechBadges').innerHTML = p.technologies.map(t => `<span class="tech-badge">${t}</span>`).join('');
@@ -1464,6 +1545,30 @@
         this.reset();
       }, 3000);
     });
+
+    // ============================================================
+    // ============================================================
+    // TYPING EFFECT: nome digitado como se alguém estivesse escrevendo
+    // ============================================================
+    function typeName() {
+      const text = 'Rafael Góes Duarte';
+      const el = document.getElementById('typedName');
+      const cursor = document.getElementById('typedCursor');
+      if (!el) return;
+      el.textContent = '';
+      if (cursor) cursor.style.display = 'inline-block';
+      let i = 0;
+      const speed = 70;
+      const timer = setInterval(() => {
+        el.textContent += text[i++] || '';
+        if (i >= text.length) {
+          clearInterval(timer);
+          if (cursor) setTimeout(() => { cursor.style.display = 'none'; }, 800);
+        }
+      }, speed);
+    }
+
+    window.addEventListener('load', typeName);
 
     // ============================================================
     // RENDER INICIAL
