@@ -503,6 +503,20 @@
       border-radius: 20px;
       font-family: 'Fira Code', monospace;
     }
+    .project-thumb-placeholder {
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: radial-gradient(circle at 30% 20%, rgba(255,221,86,0.12), transparent 60%), var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+      padding: 0 20px;
+    }
+    .project-thumb-placeholder i { font-size: 2.6rem; color: var(--accent); }
+    .project-thumb-placeholder span { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); }
     .screenshot-count-badge {
       position: absolute;
       top: 10px;
@@ -843,17 +857,15 @@
             <div class="terminal-output-name">
               <span id="typedName"></span><span class="cursor-blink" id="typedCursor"></span>
             </div>
-            <div class="terminal-role">&gt; Desenvolvedor Full Stack | Cientista da Computação | Engenheiro de Software</div>
+            <div class="terminal-role">&gt; Desenvolvedor Fullstack | Tech Lead | Cientista da Computação</div>
             <p class="terminal-desc">
-              Especialista em desenvolvimento de aplicações web modernas e sistemas escaláveis.
-              Atuo do backend ao frontend, projetando arquiteturas robustas, APIs eficientes e
-              interfaces bem estruturadas.<br><br>
-              Experiência na construção de produtos completos utilizando tecnologias modernas,
-              boas práticas de engenharia de software e foco em performance, segurança e
-              manutenibilidade.<br><br>
-              Apaixonado por tecnologia, inovação e impacto social, desenvolvo soluções que
-              resolvem problemas reais desde plataformas web e sistemas governamentais até
-              produtos digitais com potencial de escala.
+              Graduando em Ciência da Computação pela Universidade da Amazônia (UNAMA), atualmente
+              no 6º semestre.<br><br>
+              Desenvolvedor fullstack na startup Organnizza, plataforma de gestão de eventos. Atuei como
+              tech lead na startup Borapará, responsável pela liderança técnica e pela arquitetura de
+              software do produto.<br><br>
+              Presidente da DevLink, Liga Acadêmica de Ciência da Computação da UNAMA. Ministrei a
+              palestra "Git &amp; GitHub: do iniciante ao avançado" na Semana Acadêmica da UNAMA (2026).
             </p>
             <div class="hero-btns">
               <a href="#projetos" class="btn-accent">
@@ -902,7 +914,7 @@
               <a href="mailto:rafaelgoesti2021@gmail.com" title="E-mail"><i class="fas fa-envelope"></i></a>
             </div>
             <div class="profile-badge"><i class="fas fa-map-marker-alt"></i> Belém, Pará — Brasil</div>
-            <div class="profile-badge"><i class="fas fa-graduation-cap"></i> UNAMA — Ciência da Computação (em andamento, conclusão prevista: 2028)</div>
+            <div class="profile-badge"><i class="fas fa-graduation-cap"></i> UNAMA — Ciência da Computação (6º semestre, conclusão prevista: 2028)</div>
             <div class="profile-badge"><i class="fas fa-circle" style="color:#28c840;font-size:0.6rem"></i> Disponível para oportunidades</div>
           </div>
         </div>
@@ -911,41 +923,42 @@
           <div class="section-line"></div>
           <div class="section-subtitle">Conheça um pouco da minha trajetória</div>
           <p class="about-text">
-            Olá! Sou <strong>Rafael Góes Duarte</strong>, estudante de <strong>Ciência da Computação</strong> e apaixonado por
-            <strong>tecnologia</strong>, <strong>inovação</strong> e <strong>educação</strong>. Desde que comecei na área, sempre
-            me interessei por entender como a <strong>tecnologia</strong> pode ser usada para resolver <strong>problemas reais</strong>
-            e gerar <strong>impacto positivo</strong> na sociedade.
+            <strong>Formação:</strong> graduando em <strong>Ciência da Computação</strong> pela
+            <strong>Universidade da Amazônia (UNAMA)</strong>, atualmente no <strong>6º semestre</strong>.
           </p>
           <p class="about-text">
-            Atualmente curso <strong>Ciência da Computação</strong> na <strong>Universidade da Amazônia (UNAMA)</strong>, onde venho
-            aprofundando meus conhecimentos em <strong>engenharia de software</strong> e <strong>desenvolvimento de sistemas</strong>.
-            Ao longo da minha formação, venho trabalhando com <strong>desenvolvimento full stack</strong>, <strong>banco de dados</strong>,
-            <strong>redes de computadores</strong> e criação de <strong>APIs RESTful</strong>, sempre buscando aplicar na prática
-            aquilo que aprendo.
+            <strong>Atuação profissional:</strong> desenvolvedor <strong>fullstack</strong> na startup <strong>Organnizza</strong>,
+            plataforma de gestão de eventos. Atuei como <strong>tech lead</strong> na startup <strong>Borapará</strong>, responsável
+            pela liderança técnica e pela arquitetura de software do produto.
           </p>
           <p class="about-text">
-            Também atuei como <strong>líder técnico</strong> no desenvolvimento de <strong>sistemas para órgãos públicos do estado do Pará</strong>,
-            liderando equipes e entregando soluções tecnológicas para instituições como o
-            <strong>2º Batalhão de Infantaria de Selva (2º BIS)</strong>, o <strong>Batalhão de Polícia Ambiental (BPA)</strong> e a
-            <strong>Secretaria de Segurança Pública e Defesa Social do Pará (SEGUP)</strong>.
+            <strong>Atuação acadêmica:</strong> presidente da <strong>DevLink</strong>, Liga Acadêmica de Ciência da Computação da
+            UNAMA. Ministrei a palestra <strong>"Git &amp; GitHub: do iniciante ao avançado"</strong> na Semana Acadêmica da UNAMA (2026).
           </p>
           <p class="about-text">
-            Gosto de participar de projetos <strong>desafiadores</strong> e de construir soluções que realmente possam ser utilizadas
-            no dia a dia das pessoas e das instituições. Estou em constante aprendizado e acredito que a <strong>tecnologia</strong>,
-            quando bem aplicada, pode ser uma ferramenta poderosa para <strong>melhorar a sociedade</strong>.
+            <strong>Competências técnicas:</strong> desenvolvimento fullstack web e mobile com <strong>TypeScript</strong>,
+            <strong>React</strong>, <strong>Next.js</strong>, <strong>React Native (Expo)</strong> e <strong>Node.js</strong>
+            (NestJS e Express); construção de <strong>APIs REST</strong> e comunicação em tempo real com
+            <strong>WebSockets/Socket.IO</strong>; bancos de dados <strong>PostgreSQL</strong>, <strong>MySQL</strong> e
+            <strong>Redis</strong>; infraestrutura em nuvem na <strong>AWS</strong> (ECS, RDS, S3, CloudFront, CloudWatch),
+            <strong>Docker</strong>, <strong>Terraform</strong> e CI/CD com <strong>GitHub Actions</strong>; arquitetura de software
+            (Clean Architecture, SOLID, design de APIs), testes automatizados, observabilidade e segurança de aplicações.
           </p>
           <div class="row mt-4 g-3">
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fas fa-code"></i><div><div style="color:white;font-size:0.82rem">Back-End &amp; Front-End</div><div style="font-size:0.7rem">Java, Spring Boot, TypeScript, NestJS, Node, Python, Flask, Django, FastAPI, React</div></div></div>
+              <div class="profile-badge"><i class="fas fa-code"></i><div><div style="color:white;font-size:0.82rem">Back-End</div><div style="font-size:0.7rem">TypeScript, Node.js (NestJS, Express), Python (Django, Flask, FastAPI), Java, Spring Boot</div></div></div>
             </div>
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fas fa-database"></i><div><div style="color:white;font-size:0.82rem">Banco de Dados</div><div style="font-size:0.7rem">MySQL, SQLite, PostgreSQL</div></div></div>
+              <div class="profile-badge"><i class="fas fa-mobile-alt"></i><div><div style="color:white;font-size:0.82rem">Front-End &amp; Mobile</div><div style="font-size:0.7rem">React, Next.js, React Native (Expo), Flutter</div></div></div>
             </div>
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fas fa-mobile-alt"></i><div><div style="color:white;font-size:0.82rem">Mobile</div><div style="font-size:0.7rem">Flutter (Dart)</div></div></div>
+              <div class="profile-badge"><i class="fas fa-database"></i><div><div style="color:white;font-size:0.82rem">Banco de Dados</div><div style="font-size:0.7rem">PostgreSQL, MySQL, Redis, SQLite</div></div></div>
             </div>
             <div class="col-sm-6">
-              <div class="profile-badge"><i class="fab fa-docker"></i><div><div style="color:white;font-size:0.82rem">DevOps</div><div style="font-size:0.7rem">Docker, Git, GitHub, AWS, Terraform</div></div></div>
+              <div class="profile-badge"><i class="fab fa-docker"></i><div><div style="color:white;font-size:0.82rem">Cloud &amp; DevOps</div><div style="font-size:0.7rem">AWS (ECS, RDS, S3, CloudFront, CloudWatch), Docker, Terraform, GitHub Actions</div></div></div>
+            </div>
+            <div class="col-12">
+              <div class="profile-badge"><i class="fas fa-sitemap"></i><div><div style="color:white;font-size:0.82rem">Arquitetura &amp; Qualidade</div><div style="font-size:0.7rem">Clean Architecture, SOLID, design de APIs, testes automatizados, observabilidade e segurança de aplicações</div></div></div>
             </div>
           </div>
         </div>
@@ -970,10 +983,37 @@
             <div class="timeline-item">
               <div class="timeline-dot"><i class="fas fa-circle"></i></div>
               <div class="timeline-card">
-                <div class="timeline-period">Janeiro 2025 — Presente</div>
+                <div class="timeline-period">2026 — Presente</div>
+                <div class="timeline-title">Desenvolvedor Fullstack — Organnizza</div>
+                <div class="timeline-subtitle">Organnizza Eventos e Tecnologia · Startup de gestão de eventos</div>
+                <div class="timeline-desc">Desenvolvimento fullstack da Organnizza, plataforma de gestão de eventos. Atuação no frontend com React e no backend com Python e Django, abrangendo a construção de APIs, regras de negócio e integração entre as camadas da aplicação.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2026</div>
+                <div class="timeline-title">Tech Lead — Borapará</div>
+                <div class="timeline-subtitle">FA Tecnologia e Mobilidade Ltda. · 40h semanais</div>
+                <div class="timeline-desc">Liderança técnica da equipe de desenvolvimento da Borapará, com responsabilidade pela arquitetura de software, definição de padrões técnicos, code review e decisões de tecnologia do produto.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2026</div>
+                <div class="timeline-title">Palestrante — "Git &amp; GitHub: do iniciante ao avançado"</div>
+                <div class="timeline-subtitle">Semana Acadêmica · Universidade da Amazônia - UNAMA</div>
+                <div class="timeline-desc">Palestra sobre versionamento de código com Git e colaboração no GitHub, do básico a fluxos avançados.</div>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"><i class="fas fa-circle"></i></div>
+              <div class="timeline-card">
+                <div class="timeline-period">2025 — Presente</div>
                 <div class="timeline-title">Presidente &amp; Líder Técnico - DevLink (Liga Acadêmica)</div>
                 <div class="timeline-subtitle">DevLink - Universidade da Amazônia - UNAMA</div>
-                <div class="timeline-desc">Liderança técnica de equipes de 10-25 desenvolvedores; definição de arquitetura, pilhas tecnológicas, integração de dados e articulação com stakeholders. Entrega de 3 sistemas em produção, documentação arquitetural e pipelines de análise de dados.</div>
+                <div class="timeline-desc">Coordenação da liga acadêmica, organização de eventos, palestras e atividades técnicas voltadas aos estudantes de Ciência da Computação da UNAMA. Liderança técnica de equipes de 10-25 desenvolvedores; definição de arquitetura, pilhas tecnológicas, integração de dados e articulação com stakeholders. Entrega de 3 sistemas em produção, documentação arquitetural e pipelines de análise de dados.</div>
               </div>
             </div>
             <div class="timeline-item">
@@ -1121,12 +1161,15 @@
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" alt="Spring Boot"> Spring Boot</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript"> TypeScript</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nestjs/nestjs-original.svg" alt="NestJS"> NestJS</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg" alt="Node.js"> Node.js</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original.svg" alt="Express" style="filter:invert(1)"> Express</div>
             </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
           <div class="tech-category-title">Front-End</div>
             <div class="tech-grid">
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React"> React</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nextjs/nextjs-original.svg" alt="Next.js" style="filter:invert(1)"> Next.js</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="TypeScript"> TypeScript</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap"> Bootstrap</div>
@@ -1138,11 +1181,13 @@
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/sqlite/sqlite-original.svg" alt="SQLite"> SQLite</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"> PostgreSQL</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redis/redis-original.svg" alt="Redis"> Redis</div>
           </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
           <div class="tech-category-title">Mobile</div>
           <div class="tech-grid">
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" alt="React Native"> React Native (Expo)</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/flutter/flutter-original.svg" alt="Flutter"> Flutter</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/dart/dart-original.svg" alt="Dart"> Dart</div>
           </div>
@@ -1155,6 +1200,7 @@
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt="GitHub" style="filter:invert(1)"> GitHub</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="AWS"> AWS</div>
             <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/terraform/terraform-original.svg" alt="Terraform"> Terraform</div>
+            <div class="tech-item"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/githubactions/githubactions-original.svg" alt="GitHub Actions"> GitHub Actions</div>
             </div>
         </div>
         <div class="col-md-6" data-aos="fade-up" data-aos-delay="500">
@@ -1270,6 +1316,34 @@
     // Para adicionar screenshots: adicione caminhos no array "screenshots".
     // ============================================================
     const PROJECTS = [
+      {
+        id: 8,
+        title: "Organnizza - Gestão de Eventos",
+        category: "web",
+        categoryLabel: "Startup / Fullstack",
+        description: "Plataforma completa para eventos profissionais: página de inscrição, venda de ingressos, pagamentos (Pix e cartão), certificados e credenciamento/check-in. Desenvolvimento fullstack com frontend em React e backend em Python e Django, abrangendo a construção de APIs, regras de negócio e integração entre as camadas da aplicação.",
+        technologies: ["React", "Python", "Django", "APIs REST"],
+        githubUrl: "#",
+        siteUrl: "https://organnizza.com.br/",
+        icon: "fa-calendar-check",
+        screenshots: [
+          "images/organnizza-site.png"
+        ]
+      },
+      {
+        id: 9,
+        title: "Borapará - Mobilidade Urbana",
+        category: "mobile",
+        categoryLabel: "Startup / Tech Lead",
+        description: "App de mobilidade urbana paraense, disponível em Belém (Android e iOS). Liderança técnica da equipe de desenvolvimento, com responsabilidade pela arquitetura de software, definição de padrões técnicos, code review e decisões de tecnologia do produto.",
+        technologies: ["Arquitetura de Software", "Code Review", "Padrões Técnicos", "Liderança Técnica"],
+        githubUrl: "#",
+        siteUrl: "https://borapara.com.br/",
+        icon: "fa-route",
+        screenshots: [
+          "images/borapara-site.png"
+        ]
+      },
       {
         id: 5,
         title: "SistemaBPA - Gestão Ambiental",
@@ -1406,13 +1480,20 @@
         col.setAttribute('data-aos', 'fade-up');
         col.setAttribute('data-aos-delay', (i % 3) * 100);
         const noGitHub = p.githubUrl === '#';
-        col.innerHTML = `
-          <div class="project-card">
-            <div class="project-thumb-wrapper" onclick="openScreenshots(${p.id})">
-              <img src="${(p.screenshots && p.screenshots.length) ? p.screenshots[0] : p.thumbnail}" class="project-thumb" alt="${p.title}" loading="lazy">
+        const hasShots = p.screenshots && p.screenshots.length > 0;
+        const thumb = hasShots
+          ? `<div class="project-thumb-wrapper" onclick="openScreenshots(${p.id})">
+              <img src="${p.screenshots[0]}" class="project-thumb" alt="${p.title}" loading="lazy">
               <div class="project-thumb-overlay"><span><i class="fas fa-images me-1"></i>Ver Screenshots</span></div>
               ${p.screenshots.length > 1 ? `<div class="screenshot-count-badge"><i class="fas fa-images"></i>${p.screenshots.length} prints</div>` : ''}
-            </div>
+            </div>`
+          : `<div class="project-thumb-placeholder">
+              <i class="fas ${p.icon || 'fa-code'}"></i>
+              <span>${p.title}</span>
+            </div>`;
+        col.innerHTML = `
+          <div class="project-card">
+            ${thumb}
             <div class="project-body">
               <div class="project-category">${p.categoryLabel}</div>
               <div class="project-title">${p.title}</div>
@@ -1420,12 +1501,16 @@
               <div class="tech-badges">${p.technologies.map(t => `<span class="tech-badge">${t}</span>`).join('')}</div>
               <div class="project-actions">
                 <button class="btn-project-primary" onclick="openScreenshots(${p.id})">
-                  <i class="fas fa-images me-1"></i>Screenshots
+                  <i class="fas ${hasShots ? 'fa-images' : 'fa-info-circle'} me-1"></i>${hasShots ? 'Screenshots' : 'Detalhes'}
                 </button>
+                ${p.siteUrl ? `
+                <a href="${p.siteUrl}" target="_blank" rel="noopener" class="btn-project-secondary">
+                  <i class="fas fa-globe me-1"></i>Site
+                </a>` : `
                 <a href="${p.githubUrl}" ${!noGitHub ? 'target="_blank"' : 'onclick="return false"'}
                    class="btn-project-secondary" ${noGitHub ? 'style="opacity:0.4;cursor:not-allowed"' : ''}>
                   <i class="fab fa-github me-1"></i>GitHub
-                </a>
+                </a>`}
               </div>
             </div>
           </div>`;
@@ -1446,9 +1531,11 @@
       document.getElementById('modalProjectDesc').textContent = p.description;
       document.getElementById('modalTechBadges').innerHTML = p.technologies.map(t => `<span class="tech-badge">${t}</span>`).join('');
       const link = document.getElementById('modalGithubLink');
-      link.href = p.githubUrl;
-      link.style.opacity = p.githubUrl === '#' ? '0.4' : '1';
-      link.style.pointerEvents = p.githubUrl === '#' ? 'none' : 'auto';
+      const url = p.siteUrl || p.githubUrl;
+      link.href = url;
+      link.innerHTML = p.siteUrl ? '<i class="fas fa-globe"></i> Ver site' : '<i class="fab fa-github"></i> Ver no GitHub';
+      link.style.opacity = url === '#' ? '0.4' : '1';
+      link.style.pointerEvents = url === '#' ? 'none' : 'auto';
       const inner = document.getElementById('carouselInner');
       const indicators = document.getElementById('carouselIndicators');
       inner.innerHTML = '';
@@ -1466,6 +1553,7 @@
         indicators.appendChild(btn);
       });
       indicators.style.display = p.screenshots.length <= 1 ? 'none' : 'flex';
+      document.getElementById('screenshotsCarousel').style.display = p.screenshots.length ? '' : 'none';
       new bootstrap.Modal(document.getElementById('screenshotsModal')).show();
     }
 
